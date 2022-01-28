@@ -1,10 +1,8 @@
-/* indent size: 2 */
-
 module.exports = (app) => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Model = app.model.define(
-    'user',
+  const Users = app.model.define(
+    'users',
     {
       id: {
         type: INTEGER(11),
@@ -33,7 +31,7 @@ module.exports = (app) => {
     }
   );
 
-  Model.associate = function () {};
+  Users.associate = function () {};
 
-  return Model;
+  return Users;
 };

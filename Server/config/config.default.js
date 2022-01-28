@@ -1,4 +1,5 @@
 /* eslint valid-jsdoc: "off" */
+// 参考： https://juejin.cn/post/6844903842367143950
 
 'use strict';
 

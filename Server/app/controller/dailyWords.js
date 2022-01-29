@@ -1,6 +1,6 @@
 // 每日一句 api 操作
 const Controller = require('egg').Controller;
-const { toInt, foundErr, foundSucc } = require('../utils/tools');
+const { toInt, foundErr, foundSucc, handleSucc, handleErr } = require('../utils/tools');
 
 class DailyWordsController extends Controller {
   async index() {
@@ -21,7 +21,12 @@ class DailyWordsController extends Controller {
       content,
       userId,
     };
-    ctx.body = await ctx.model.dailyWords.create(body);
+    try {
+      const dailyWords = await ctx.model.DailyWords.create(body);
+      handleSucc(ctx, dailyWords);
+    } catch ({message}) {
+      handleErr(ctx, message);
+    }
   }
 
   async update() {

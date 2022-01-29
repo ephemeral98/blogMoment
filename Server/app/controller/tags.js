@@ -1,53 +1,94 @@
 // 标签 api 操作
 
 const Controller = require('egg').Controller;
-const { toInt } = require('../utils/tools');
+const { toInt, handleSucc, handleErr } = require('../utils/tools');
 
 class TagsController extends Controller {
   async index() {
-    const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.tags.findAll(query);
+    const { ctx } = this;
+    try {
+      let tags;
+      const { articleId } = ctx.query;
+      if (articleId) {
+        // 查询某文章下的所有标签
+        const where = {
+          articleId,
+        };
+        tags = await ctx.model.Tags.findAndCountAll({ where });
+      } else {
+        tags = await ctx.model.Tags.findAndCountAll();
+      }
+
+      handleSucc(ctx, tags);
+    } catch (err) {
+      handleErr(ctx, err);
+    }
   }
 
   async show() {
-    const ctx = this.ctx;
-    ctx.body = await ctx.model.tags.findByPk(toInt(ctx.params.id));
+    const { params } = this.ctx || {};
+    if (!params.id) {
+      handleErr(this.ctx, '找不到该标签');
+    }
+    try {
+      const data = await this.ctx.model.Tags.findByPk(toInt(params.id));
+      handleSucc(this.ctx, data);
+    } catch (err) {
+      handleErr(this.ctx, err);
+    }
   }
 
   async create() {
-    const ctx = this.ctx;
-    const { name, articleId } = ctx.request.body;  // 获取tag名字，和关联该标签的文章id
-    const user = await ctx.model.tags.create({ name, articleId });
-    ctx.status = 200;
-    ctx.body = user;
+    const { ctx } = this;
+    const { name, articleId } = ctx.request.body; // 获取tag名字，和关联该标签的文章id
+    if (!name) {
+      handleErr(ctx, '标签名字不能为空');
+      return;
+    }
+    try {
+      const tags = await ctx.model.Tags.create({ name, articleId });
+      handleSucc(ctx, tags);
+    } catch (err) {
+      handleErr(ctx, err);
+    }
   }
 
   async update() {
     const ctx = this.ctx;
     const id = toInt(ctx.params.id);
-    const tags = await ctx.model.tags.findByPk(id);
-    if (!tags) {
-      ctx.status = 404;
+    const Tags = await ctx.model.Tags.findByPk(id);
+    if (!Tags) {
+      handleErr(ctx, '找不到该标签');
       return;
     }
 
-    const { name, articleId } = ctx.request.body;
-    await tags.update({ name, articleId });
-    ctx.body = tags;
+    const { name } = ctx.request.body;
+    if (!name) {
+      handleErr(ctx, '标签名字不能为空');
+      return;
+    }
+    try {
+      await Tags.update({ name });
+      handleSucc(ctx, '修改成功');
+    } catch (err) {
+      handleErr(ctx, err);
+    }
   }
 
   async destroy() {
-    const ctx = this.ctx;
+    const { ctx } = this;
     const id = toInt(ctx.params.id);
-    const tags = await ctx.model.tags.findByPk(id);
-    if (!tags) {
-      ctx.status = 404;
+    const Tags = await ctx.model.Tags.findByPk(id);
+    if (!Tags) {
+      handleErr(ctx, '找不到该标签');
       return;
     }
-
-    await tags.destroy();
-    ctx.status = 200;
+    try {
+      await Tags.destroy();
+      handleSucc(ctx, '删除成功');
+    } catch (err) {
+      handleErr(ctx, err);
+    }
   }
 }
 

@@ -1,4 +1,3 @@
-// app/controller/users.js
 const Controller = require('egg').Controller;
 
 function toInt(str) {

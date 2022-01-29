@@ -1,12 +1,12 @@
 // 评论 api 操作
 const Controller = require('egg').Controller;
-const { toInt, foundErr, foundSucc } = require('../utils/tools');
+const { toInt, foundErr, foundSucc, handleSucc, handleErr } = require('../utils/tools');
 
 class CommentController extends Controller {
   async index() {
     const { ctx } = this;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.comment.findAll(query);
+    ctx.body = await ctx.model.Comment.findAndCountAll(query);
   }
 
   async show() {
@@ -16,16 +16,19 @@ class CommentController extends Controller {
 
   async create() {
     const { ctx } = this;
-    const { content, parent, toWho, userId } = ctx.body;
+    const { content, parent, toWho, userId } = ctx.request.body;
     const body = {
       content,
       parent,
       toWho,
       userId,
     };
-    const comment = await ctx.model.comment.create(body);
-    ctx.status = 200;
-    ctx.body = comment;
+    try {
+      const comment = await ctx.model.Comment.create(body);
+      handleSucc(ctx, comment);
+    } catch ({ message }) {
+      handleErr(ctx, message);
+    }
   }
 
   async update() {}
@@ -33,10 +36,17 @@ class CommentController extends Controller {
   async destroy() {
     const { ctx } = this;
     const id = toInt(ctx.params.id);
-    const comment = ctx.model.comment.findByPk(id);
-    foundErr(comment, ctx, '找不到该文章');
-    await comment.destroy();
-    foundSucc('删除成功');
+    const comment = await ctx.model.Comment.findByPk(id);
+    if (!comment) {
+      handleErr(ctx, '找不到该评论');
+      return;
+    }
+    try {
+      await comment.destroy();
+      handleSucc(ctx, '删除成功');
+    } catch ({ message }) {
+      handleErr(ctx, message);
+    }
   }
 }
 

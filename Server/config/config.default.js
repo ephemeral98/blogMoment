@@ -26,6 +26,9 @@ module.exports = (appInfo) => {
     define: {
       freezeTableName: true, // 强制表名称等于模型名称
     },
+    dialectOptions: {
+      charset: 'utf8' // 防止中文乱码
+    }
   };
 
   config.security = {

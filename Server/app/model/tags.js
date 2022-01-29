@@ -12,13 +12,22 @@ module.exports = (app) => {
         created_at: DATE,
         updated_at: DATE,
       },
+
+      /**
+       * 标签名字
+       */
       name: {
         type: STRING(20),
         allowNull: false,
+        uniqueKey: true,
       },
+
+      /**
+       * 该标签下的文章
+       */
       articleId: {
         type: INTEGER(4),
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
@@ -34,7 +43,6 @@ module.exports = (app) => {
     // 与 articles 存在多对多的关系，所以是belongsToMany()
     app.model.Tags.belongsToMany(app.model.Articles, {
       through: 'articles-tags',
-      foreignKey: 'tagId',
       otherKey: 'articleId',
     });
   };

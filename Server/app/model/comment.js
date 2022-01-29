@@ -16,7 +16,7 @@ module.exports = (app) => {
        * 评论内容
        */
       content: {
-        type: STRING(20),
+        type: STRING,
         allowNull: false,
       },
 
@@ -54,10 +54,12 @@ module.exports = (app) => {
   );
 
   Comment.associate = () => {
-    // 与 user 存在多对一的关系，所以使用belongsTo()
-    app.model.Comment.belongsTo(app.model.User, {
+    // 与 Users 存在多对一的关系，所以使用belongsTo()
+    app.model.Comment.belongsTo(app.model.Users, {
       foreignKey: 'userId',
       targetKey: 'id',
     });
   };
+
+  return Comment;
 };

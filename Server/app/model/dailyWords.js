@@ -1,8 +1,8 @@
 // 每日一句
 module.exports = (app) => {
   const { STRING, TEXT, INTEGER } = app.Sequelize;
-  const dailyWords = app.model.define(
-    'dailyWords',
+  const DailyWords = app.model.define(
+    'DailyWords',
     {
       id: {
         type: INTEGER(11),
@@ -35,9 +35,9 @@ module.exports = (app) => {
     }
   );
 
-  dailyWords.associate = () => {
-    // 与 user 存在多对一的关系，所以使用belongsTo()
-    app.model.dailyWords.belongsTo(app.model.user, {
+  DailyWords.associate = () => {
+    // 与 Users 存在多对一的关系，所以使用belongsTo()
+    app.model.DailyWords.belongsTo(app.model.Users, {
       foreignKey: 'userId',
       targetKey: 'id',
     });

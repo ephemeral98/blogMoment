@@ -41,7 +41,7 @@ class DailyWordsController extends Controller {
     const dailyWords = await ctx.model.dailyWords.findByPk(id);
     foundErr(dailyWords, ctx, '找不到该句子');
     await dailyWords.destroy();
-    foundSucc('删除成功');
+    foundSucc();
   }
 }
 

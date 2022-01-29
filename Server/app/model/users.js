@@ -12,14 +12,34 @@ module.exports = (app) => {
         created_at: DATE,
         updated_at: DATE,
       },
+      /**
+       * 姓名
+       */
       name: {
         type: STRING(20),
         allowNull: true,
         default: '游客',
       },
+
+      /**
+       * 年龄
+       */
       age: {
         type: INTEGER(4),
-        allowNull: true,
+      },
+
+      /**
+       * 评论
+       */
+      commentId: {
+        type: INTEGER(11),
+      },
+
+      /**
+       * 每日一句
+       */
+      dailyWordsId: {
+        type: STRING(600),
       },
     },
     {
@@ -31,7 +51,19 @@ module.exports = (app) => {
     }
   );
 
-  Users.associate = function () {};
+  Users.associate = () => {
+    // 与 评论 存在 一对多 的关系
+    app.model.Users.hasMany(app.model.Comment, {
+      foreignKey: 'commentId',
+      target: 'id',
+    });
+
+    // 与 每日一句 存在 一对多 的关系
+    app.model.Users.hasMany(app.model.DailyWords, {
+      foreignKey: 'dailyWordsId',
+      target: 'id',
+    });
+  };
 
   return Users;
 };

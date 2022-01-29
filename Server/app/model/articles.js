@@ -77,8 +77,16 @@ module.exports = (app) => {
       /**
        * 标签id
        */
-      tag_id: {
+      tagId: {
         type: INTEGER(11),
+      },
+
+      /**
+       * 用户id
+       */
+      userId: {
+        type: INTEGER(11),
+        allowNull: false,
       },
     },
     {
@@ -91,11 +99,16 @@ module.exports = (app) => {
   );
 
   Articles.associate = () => {
-    // 与 articles 存在多对多的关系，所以是belongsToMany()
+    // 与 标签 存在多对多的关系，所以是belongsToMany()
     app.model.Articles.belongsToMany(app.model.Tags, {
       through: 'articles-tags',
-      foreignKey: 'articleId',
       otherKey: 'tagId',
+    });
+
+    // 与 用户 存在 多对一 的关系
+    app.model.Articles.belongsTo(app.model.Users, {
+      foreignKey: 'userId',
+      targetKey: 'id',
     });
   };
 

@@ -12,7 +12,9 @@
     "strict": true,
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "@cps/*": ["src/components/*"],
+      "@img/*": ["src/assets/img/*"]
     },
     "allowSyntheticDefaultImports": true
   },

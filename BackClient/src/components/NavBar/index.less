@@ -1,0 +1,39 @@
+.nav_wrap {
+  flex: 0 0 100rem;
+  width: 100rem;
+  height: 100vh;
+  background-color: #2f3035;
+  transition: 0.8s;
+  font-size: 30rem;
+  border-radius: 20rem;
+
+  .flexPos(center);
+  flex-direction: column;
+
+  .nav_item {
+    margin-top: 100rem;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .icon {
+    font-size: 30rem;
+  }
+
+  .text {
+    min-width: 150rem;
+    .flexPos;
+    display: none;
+    color: #b889d4;
+    margin-left: 20rem;
+  }
+
+  &:hover {
+    width: 280rem;
+    flex: 0 0 280rem;
+
+    .text {
+      display: flex;
+    }
+  }
+}

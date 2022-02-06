@@ -1,0 +1,28 @@
+.search_bar_wrap {
+  width: 250rem;
+  height: 50rem;
+  background-color: pink;
+  padding: 5rem;
+  display: flex;
+  transition: 1s;
+
+  // &:hover {
+  //   width: 350rem;
+  // }
+
+  &.focus_bar {
+    width: 350rem;
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    padding-left: 10rem;
+    margin-left: 8rem;
+    flex: auto;
+    width: 0;
+  }
+}

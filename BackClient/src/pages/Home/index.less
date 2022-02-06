@@ -1,0 +1,75 @@
+.home_wrap {
+  display: flex;
+}
+
+.main {
+  height: 300px;
+  background-color: skyblue;
+  flex: auto;
+  padding: 50rem;
+
+  .header {
+    .flexPos(space-between);
+
+    // 批量删除按钮
+    .del_many_btn {
+      padding: 10rem 20rem;
+      background-color: #f29fbd;
+      border-radius: 10rem;
+
+      &:hover {
+        color: #fff;
+        background-color: #c90950;
+      }
+    }
+  }
+}
+
+// 表格列表
+.container {
+  margin: 50rem 0;
+  height: calc(100vh - 200rem);
+  overflow: auto;
+  background-color: #2f3035;
+  color: #fff;
+
+  th {
+    font-weight: bold;
+    color: #7c98eb;
+  }
+
+  th,
+  td {
+    border: solid 1.5px #9b9ce2;
+    padding: 10rem;
+  }
+
+  // 用户名字
+  .user_name {
+    cursor: pointer;
+
+    &:hover {
+      color: #b80748;
+    }
+  }
+
+  // 删除按钮
+  .del_btn {
+    background-color: #f29fbd;
+    transition: 1s;
+
+    &:hover {
+      background-color: #b80748;
+    }
+  }
+
+  // 发消息按钮
+  .msg_btn {
+    background-color: #88b1f4;
+    transition: 1s;
+
+    &:hover {
+      background-color: #1e6ff0;
+    }
+  }
+}

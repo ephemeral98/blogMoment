@@ -9,6 +9,7 @@ export default defineConfig({
   title: 'blogMement后台管理',
   mfsu: {},
   webpack5: {},
+  dva:{},
   routes,
   fastRefresh: {},
   alias: {

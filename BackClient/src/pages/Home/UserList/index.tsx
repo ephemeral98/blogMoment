@@ -1,10 +1,17 @@
 // 用户列表
 import { useState } from 'react';
 import css from '../index.less';
+import { Checkbox } from 'antd';
+import { connect } from 'umi';
+
+console.log(connect);
 
 export default () => {
   // 表格头
   const [headList, setHeadList] = useState([
+    {
+      name: '',
+    },
     {
       name: 'id',
     },
@@ -24,12 +31,29 @@ export default () => {
     {
       id: 1,
       name: '张三',
+      checked: false,
     },
     {
       id: 2,
       name: '李四',
+      checked: false,
     },
   ]);
+
+  /**
+   * 选中项
+   * @param id 用户id
+   * @param e 多选框状态
+   */
+  function pick(id: number, e: any) {
+    const newList = bodyList.map((item) => {
+      if (item.id === id) {
+        item.checked = e.target.checked;
+      }
+      return item;
+    });
+    setBodyList(newList);
+  }
 
   /**
    * 删除
@@ -56,6 +80,13 @@ export default () => {
   const bodyListComp = bodyList.map((item) => {
     return (
       <tr key={item.id}>
+        <td>
+          <Checkbox
+            onChange={(e) => {
+              pick(item.id, e);
+            }}
+          />
+        </td>
         <td>{item.id}</td>
         <td className={css.user_name}>{item.name}</td>
         <td>

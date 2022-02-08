@@ -6,13 +6,23 @@ import UserList from './UserList';
 
 export default (props: any) => {
   let [disabled, setDisabled] = useState(false);
+
+  /**
+   * 批量删除操作
+   */
+  function handleDelMany() {
+    console.log('del many...');
+  }
+
   return (
     <div className={css.home_wrap}>
       <NavBar />
       <section className={css.main}>
         <div className={css.header}>
           <SearchBar />
-          <button className={css.del_many_btn}>批量删除</button>
+          <button onClick={handleDelMany} className={css.del_many_btn}>
+            批量删除
+          </button>
         </div>
         <section className={css.container}>
           {props.children}

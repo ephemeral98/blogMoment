@@ -45,7 +45,7 @@ module.exports = (app) => {
       },
     },
     {
-      tableName: 'comment',
+      tableName: 'comments',
       createdAt: true,
       updatedAt: true,
       deletedAt: '已删除!',

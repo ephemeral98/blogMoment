@@ -1,14 +1,11 @@
 .search_bar_wrap {
-  width: 250rem;
-  height: 50rem;
-  background-color: pink;
-  padding: 5rem;
-  display: flex;
+  width: 200rem;
+  height: 90rem;
+  background-color: #2f3035;
+  padding: 15rem;
   transition: 1s;
-
-  // &:hover {
-  //   width: 350rem;
-  // }
+  .flexPos(center);
+  border-radius: 20rem;
 
   &.focus_bar {
     width: 350rem;
@@ -16,6 +13,12 @@
 
   .icon {
     cursor: pointer;
+    font-size: 40rem;
+    transition: 0.3s;
+
+    &:hover {
+      font-size: 50rem;
+    }
   }
 
   input {
@@ -24,5 +27,7 @@
     margin-left: 8rem;
     flex: auto;
     width: 0;
+    background-color: transparent;
+    color: #fff;
   }
 }

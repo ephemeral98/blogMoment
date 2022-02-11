@@ -1,4 +1,4 @@
-import style from './index.less';
+import css from './index.less';
 import { useState } from 'react';
 
 export default () => {
@@ -14,11 +14,11 @@ export default () => {
 
   return (
     <div
-      className={[style.search_bar_wrap, focusBar ? style.focus_bar : ''].join(
+      className={[css.search_bar_wrap, focusBar ? css.focus_bar : ''].join(
         ' ',
       )}
     >
-      <i className={`${style.icon} iconfont icon-user`}></i>
+      <i className={`${css.icon} iconfont icon-search`}></i>
       <input
         onFocus={touchBar}
         onBlur={leaveBar}

@@ -3,13 +3,19 @@
 }
 
 .main {
-  height: 300px;
-  background-color: skyblue;
   flex: auto;
-  padding: 50rem;
+  padding: 20rem 30rem;
 
   .header {
     .flexPos(space-between);
+
+    .home_title {
+      font-size: 50rem;
+      font-weight: bold;
+      background-image: linear-gradient(to right bottom, #f29fbd, #7d97e8);
+      background-clip: text;
+      color: transparent;
+    }
 
     // 批量删除按钮
     .del_many_btn {
@@ -27,11 +33,13 @@
 
 // 表格列表
 .container {
-  margin: 50rem 0;
+  margin: 20rem 0;
   height: calc(100vh - 200rem);
   overflow: auto;
   background-color: #2f3035;
   color: #fff;
+  padding: 60rem;
+  border-radius: 20rem;
 
   th {
     font-weight: bold;
@@ -43,15 +51,6 @@
     border: solid 1.5px #9b9ce2;
     padding: 10rem;
     text-align: center;
-  }
-
-  // 用户名字
-  .user_name {
-    cursor: pointer;
-
-    &:hover {
-      color: #b80748;
-    }
   }
 
   // 删除按钮
@@ -66,6 +65,16 @@
 
   // 发消息按钮
   .msg_btn {
+    background-color: #3af58b;
+    transition: 1s;
+
+    &:hover {
+      background-color: #08ae50;
+    }
+  }
+
+  // 查看详情按钮
+  .detail_btn {
     background-color: #88b1f4;
     transition: 1s;
 

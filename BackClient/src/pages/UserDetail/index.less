@@ -1,0 +1,56 @@
+.user_detail_wrap {
+  padding: 50rem 350rem;
+  background-color: pink;
+  color: #fff;
+  font-size: 24rem;
+}
+
+// 删除按钮
+.del_btn {
+  position: absolute;
+  right: 50rem;
+  top: 50rem;
+  background-color: #da7692;
+  transition: 1s;
+  padding: 15rem 28rem;
+  border-radius: 20rem;
+
+  &:hover {
+    background-color: #e2406e;
+  }
+}
+
+// 基本信息
+.base_infos {
+  .flexPos(flex-start);
+
+  .avatar {
+    width: 250rem;
+    height: 250rem;
+    border-radius: 50%;
+    margin-right: 50rem;
+  }
+}
+
+// 文章信息
+.art_infos {
+  background-color: skyblue;
+  margin-top: 80rem;
+
+  .head {
+    .flexPos(space-between);
+
+    .like_container {
+      .like_num {
+        color: #da7692;
+        font-size: 30rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .main {
+    margin-top: 80rem;
+    background-color: darkblue;
+  }
+}

@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import css from '../index.less';
 import { Checkbox } from 'antd';
-import { connect } from 'umi';
+import { connect } from 'dva';
+import { IUserListType } from '@/models/TableListType';
+import { history } from 'umi';
 
-console.log(connect);
+function UserList({ tableList, dispatch }: any) {
+  console.log('dadad', tableList.userList);
 
-export default () => {
   // 表格头
   const [headList, setHeadList] = useState([
     {
@@ -24,19 +26,8 @@ export default () => {
     {
       name: '操作2',
     },
-  ]);
-
-  // 表格体
-  const [bodyList, setBodyList] = useState([
     {
-      id: 1,
-      name: '张三',
-      checked: false,
-    },
-    {
-      id: 2,
-      name: '李四',
-      checked: false,
+      name: '操作3',
     },
   ]);
 
@@ -46,13 +37,17 @@ export default () => {
    * @param e 多选框状态
    */
   function pick(id: number, e: any) {
-    const newList = bodyList.map((item) => {
+    const newList = tableList.userList.map((item: IUserListType) => {
       if (item.id === id) {
         item.checked = e.target.checked;
       }
       return item;
     });
-    setBodyList(newList);
+    dispatch({
+      type: 'tableList/pickUser',
+      payload: newList,
+    });
+    console.log(tableList.userList);
   }
 
   /**
@@ -71,13 +66,25 @@ export default () => {
     console.log('发消息。。', id);
   }
 
+  /**
+   * 查看详情
+   */
+  function toDetail(id: string | number) {
+    history.push({
+      pathname: '/userDetail',
+      query: {
+        id: id.toString(),
+      },
+    });
+  }
+
   // 表格头
   const headListComp = headList.map((item, inx) => {
     return <th key={inx}>{item.name}</th>;
   });
 
   // 表格体
-  const bodyListComp = bodyList.map((item) => {
+  const bodyListComp = tableList.userList.map((item: IUserListType) => {
     return (
       <tr key={item.id}>
         <td>
@@ -88,7 +95,7 @@ export default () => {
           />
         </td>
         <td>{item.id}</td>
-        <td className={css.user_name}>{item.name}</td>
+        <td>{item.name}</td>
         <td>
           <button
             className={css.del_btn}
@@ -109,6 +116,16 @@ export default () => {
             发消息
           </button>
         </td>
+        <td>
+          <button
+            className={css.detail_btn}
+            onClick={() => {
+              toDetail(item.id);
+            }}
+          >
+            查看详情
+          </button>
+        </td>
       </tr>
     );
   });
@@ -121,4 +138,13 @@ export default () => {
       </table>
     </>
   );
+}
+
+const mapToStateProps = (state: any) => {
+  return {
+    tableList: state.tableList,
+  };
 };
+
+// export default connect(mapToStateProps)(UserList);
+export default connect(mapToStateProps)(UserList);

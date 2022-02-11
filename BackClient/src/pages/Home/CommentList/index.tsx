@@ -3,7 +3,7 @@ import { useState } from 'react';
 import css from '../index.less';
 import dayjs from 'dayjs';
 
-export default () => {
+export default function CommentList() {
   /**
    * 删除
    */
@@ -87,4 +87,4 @@ export default () => {
       </table>
     </>
   );
-};
+}

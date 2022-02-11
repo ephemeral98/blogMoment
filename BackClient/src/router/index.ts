@@ -1,4 +1,6 @@
 export default [
+  { path: '/login', component: '@/pages/Login' },
+  { path: '/userDetail', component: '@/pages/UserDetail' },
   {
     name: '首页',
     path: '/',
@@ -13,9 +15,8 @@ export default [
         component: '@/pages/Home/CommentList',
       },
       {
-        redirect: '/user'
-      }
+        redirect: '/user',
+      },
     ],
   },
-  { path: '/login', component: '@/pages/Login' },
 ];

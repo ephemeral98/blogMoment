@@ -1,6 +1,5 @@
 .user_detail_wrap {
   padding: 50rem 350rem;
-  background-color: pink;
   color: #fff;
   font-size: 24rem;
 }
@@ -34,7 +33,7 @@
 
 // 文章信息
 .art_infos {
-  background-color: skyblue;
+  // background-color: skyblue;
   margin-top: 80rem;
 
   .head {
@@ -51,6 +50,20 @@
 
   .main {
     margin-top: 80rem;
-    background-color: darkblue;
+
+    :global(.ant-tabs-tab) {
+      color: #fff !important;
+      font-size: 20rem !important;
+    }
+
+    :global(.ant-tabs-tab-active) {
+      [role='tab'] {
+        color: #008bbd;
+      }
+    }
+
+    :global(.ant-tabs-ink-bar) {
+      background: #008bbd;
+    }
   }
 }

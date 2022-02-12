@@ -1,8 +1,16 @@
 // 用户详情页
 import css from './index.less';
 import SearchBar from '@cps/SearchBar';
+import ArticleList from '@cps/ArticleList';
+import TagList from '@cps/TagList';
+import { Tabs } from 'antd';
+const { TabPane } = Tabs;
 
 export default function UserDetail() {
+  function callback(key: any) {
+    console.log(key);
+  }
+
   return (
     <div className={css.user_detail_wrap}>
       <button className={css.del_btn}>
@@ -38,7 +46,14 @@ export default function UserDetail() {
         </div>
         {/* 主体 */}
         <section className={css.main}>
-        Lorem ipsum dolor sit.
+          <Tabs defaultActiveKey="1" onChange={callback}>
+            <TabPane tab="文章列表" key="1">
+              <ArticleList />
+            </TabPane>
+            <TabPane tab="标签列表" key="2">
+              <TagList />
+            </TabPane>
+          </Tabs>
         </section>
       </div>
     </div>

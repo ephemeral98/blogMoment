@@ -46,7 +46,7 @@ export default () => {
 
         <div className={style.mark_container}>
           <Checkbox onChange={rememberMe} />
-          <span style={{ marginLeft: '1vw', color: '#fff' }}>Remember me</span>
+          <span style={{ marginLeft: '1vw' }}>Remember me</span>
         </div>
 
         <button onClick={handleLogin} className={style.login_btn}>

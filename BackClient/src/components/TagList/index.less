@@ -1,0 +1,51 @@
+.tag_list_wrap {
+  display: flex;
+}
+
+.tag_item {
+  padding: 10rem 30rem;
+  color: #fff;
+  background-color: #00aeec;
+  border-radius: 15rem;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-left: 20rem;
+  }
+
+  .face_del {
+    border-radius: 15rem;
+    background-color: rgba(255, 255, 255, 0.279);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #f41b6f;
+    font-weight: bold;
+    font-size: 36rem;
+    cursor: pointer;
+    .flexPos(center);
+    opacity: 0;
+  }
+
+  @keyframes moveDown {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .show_face_del {
+    animation-name: moveDown;
+    animation-duration: .5s;
+    .face_del;
+    opacity: 1;
+  }
+}

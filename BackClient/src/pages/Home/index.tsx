@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import css from './index.less';
-import NavBar from '@cps/NavBar';
 import SearchBar from '@cps/SearchBar';
 import { connect } from 'dva';
 import { history } from 'umi';
@@ -41,24 +40,21 @@ function Home(props: any) {
 
   return (
     <div className={css.home_wrap}>
-      <NavBar />
-      <section className={css.main}>
-        <div className={css.header}>
-          <SearchBar />
-          <div className={css.home_title}>{curPathName}</div>
-          <button onClick={props.handleDelMany} className={css.del_many_btn}>
-            批量删除
-            <i className="iconfont icon-del"></i>
-          </button>
-        </div>
-        <section className={css.container}>
-          {props.children}
+      <div className={css.header}>
+        <SearchBar />
+        <div className={css.home_title}>{curPathName}</div>
+        <button onClick={props.handleDelMany} className="del_btn">
+          批量删除
+          <i className="iconfont icon-del"></i>
+        </button>
+      </div>
+      <section className={css.container}>
+        {props.children}
 
-          {/* 用户列表 */}
-          {/* <UserList /> */}
+        {/* 用户列表 */}
+        {/* <UserList /> */}
 
-          {/* 评论列表 */}
-        </section>
+        {/* 评论列表 */}
       </section>
     </div>
   );

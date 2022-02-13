@@ -9,7 +9,7 @@ export default () => {
       {/* 用户管理 */}
       <div
         onClick={() => {
-          history.push('/user');
+          history.push('/home/user');
         }}
         className={style.navItem}
       >
@@ -20,7 +20,7 @@ export default () => {
       {/* 评论管理 */}
       <div
         onClick={() => {
-          history.push('/comments');
+          history.push('/home/comments');
         }}
         className={style.navItem}
       >
@@ -31,7 +31,7 @@ export default () => {
       {/* 文章管理 */}
       <div
         onClick={() => {
-          history.push('/user');
+          history.push('/home/user');
         }}
         className={style.navItem}
       >

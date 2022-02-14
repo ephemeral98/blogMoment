@@ -18,6 +18,10 @@ export default [
             component: '@/pages/Home/CommentList',
           },
           {
+            path: 'articleList',
+            component: '@/pages/Home/ArticleList',
+          },
+          {
             redirect: 'user',
           },
         ],

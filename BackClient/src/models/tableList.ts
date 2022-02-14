@@ -15,6 +15,34 @@ export default {
         checked: false,
       },
     ],
+
+    // 评论列表
+    commentList: [
+      {
+        id: 1,
+        name: '张三',
+        content: 'this is comment...',
+        time: 1644066413309,
+        area: '广东省深圳市南山区',
+      },
+      {
+        id: 2,
+        name: '李四',
+        content: 'this is comment22222',
+        time: 1644096453513,
+        area: '广东省广州市天河区',
+      },
+    ],
+
+    // 文章列表
+    articleList: [
+      {
+        id: 1,
+        title: '这是标题111',
+        content: 'this is comment...',
+        name: '张三',
+      },
+    ],
   },
 
   reducers: {

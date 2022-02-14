@@ -1,7 +1,7 @@
 // 用户详情页
 import css from './index.less';
 import SearchBar from '@cps/SearchBar';
-import ArticleList from '@cps/ArticleList';
+import Articles from '@cps/Articles';
 import TagList from '@cps/TagList';
 import { Tabs, Menu, Dropdown } from 'antd';
 import { useState } from 'react';
@@ -108,10 +108,10 @@ export default function UserDetail() {
           {/* 列表 */}
           <Tabs defaultActiveKey="1" onChange={handleCurList}>
             <TabPane tab="文章列表" key="1">
-              <ArticleList />
-              <ArticleList />
-              <ArticleList />
-              <ArticleList />
+              <Articles />
+              <Articles />
+              <Articles />
+              <Articles />
             </TabPane>
             <TabPane tab="标签列表" key="2">
               <TagList />

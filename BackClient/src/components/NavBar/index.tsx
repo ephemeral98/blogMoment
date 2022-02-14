@@ -31,7 +31,7 @@ export default () => {
       {/* 文章管理 */}
       <div
         onClick={() => {
-          history.push('/home/user');
+          history.push('/home/comments');
         }}
         className={style.navItem}
       >

@@ -50,11 +50,6 @@ function Home(props: any) {
       </div>
       <section className={css.container}>
         {props.children}
-
-        {/* 用户列表 */}
-        {/* <UserList /> */}
-
-        {/* 评论列表 */}
       </section>
     </div>
   );

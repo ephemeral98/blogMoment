@@ -1,10 +1,29 @@
 // 文章列表
 import css from './index.less';
 import { Checkbox } from 'antd';
+import { history } from 'umi';
 
-export default function ArticleList() {
+/**
+ * 跳转到文章详情
+ * @param id 文章id
+ */
+function toArticleDetail(id: number) {
+  history.push({
+    pathname: '/articleDetail',
+    query: {
+      id: id.toString(),
+    },
+  });
+}
+
+export default function Articles() {
   return (
-    <div className={css.article_list_wrap}>
+    <div
+      className={css.article_list_wrap}
+      onClick={() => {
+        toArticleDetail(1);
+      }}
+    >
       <Checkbox></Checkbox>
 
       <div className={css.main}>

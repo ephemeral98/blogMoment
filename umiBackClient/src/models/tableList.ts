@@ -39,7 +39,7 @@ export default {
       {
         id: 1,
         title: '这是标题111',
-        content: 'this is comment...',
+        content: 'this is content...',
         name: '张三',
       },
     ],

@@ -1,0 +1,88 @@
+.remMixin() {
+  @functions: ~`(function() {
+
+    var clientWidth = '375px';
+    function convert(size) {
+      return typeof size === 'string' ? 
+        +size.replace('px', '') : size;
+    }
+
+
+    this.rem = function(size) {
+      // return convert(size) / convert(clientWidth) * 10 + 'rem';
+      // @media screen {
+        return 500 + 'px';
+      // }
+    }
+  })()`;
+  }
+   
+  .remMixin();
+
+  .vwMixin() {
+    @functions: ~`(function() {
+      this.rem = 100px;
+
+      /* @media screen and (max-width: 750px) {
+        this.rem = 500px;
+      } */
+
+      /* var clientWidth = '375px';
+      function convert(size) {
+        return typeof size === 'string' ? 
+          +size.replace('px', '') : size;
+      }
+      this.rem = function(size) {
+        return convert(size) / convert(clientWidth) * 10 + 'rem';
+      } */
+    })()`;
+    }
+     
+    // .vwMixin();
+
+/**
+ * 弹性盒子
+ * 参数：主轴排列、交叉轴排列
+ * eg .flexPos(center, flex-start);
+ */
+.flexPos(@posX: center, @posY: center) {
+  display: flex;
+  justify-content: @posX;
+  align-items: @posY;
+}
+
+/**
+ * 绝对定位居中
+ * eg .absCenter;
+ */
+.absCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/**
+ * 多行溢出打点
+ * 参数：行数，n行，默认2行
+ * eg：.overDots(3);
+ */
+.overDots(@n: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @n; //行数
+  -webkit-box-orient: vertical;
+}
+
+/**
+ * 清除浮动
+ * eg .clearfix;
+ */
+.clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

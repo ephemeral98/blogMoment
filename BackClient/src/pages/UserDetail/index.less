@@ -1,0 +1,79 @@
+.user_detail_wrap {
+  padding: 50rem 350rem;
+  font-size: 24rem;
+}
+
+// 删除按钮
+.del_user_btn {
+  position: absolute;
+  right: 50rem;
+  top: 50rem;
+}
+
+// 基本信息
+.base_infos {
+  .flexPos(flex-start);
+
+  .avatar {
+    width: 250rem;
+    height: 250rem;
+    border-radius: 50%;
+    margin-right: 50rem;
+  }
+}
+
+// 文章信息
+.art_infos {
+  // background-color: skyblue;
+  margin-top: 80rem;
+
+  .head {
+    .flexPos(space-between);
+
+    .like_container {
+      .like_num {
+        color: #da7692;
+        font-size: 30rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .main {
+    margin-top: 80rem;
+    position: relative;
+
+    :global(.ant-tabs-nav) {
+      &::before {
+        border-bottom: none;
+      }
+    }
+
+    :global(.ant-tabs-tab) {
+      color: #fff !important;
+      font-size: 20rem !important;
+    }
+
+    :global(.ant-tabs-tab-active) {
+      [role='tab'] {
+        color: #008bbd;
+      }
+    }
+
+    :global(.ant-tabs-ink-bar) {
+      background: #008bbd;
+    }
+
+    .order_panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 999;
+      font-size: 26rem;
+      color: #fff;
+      padding: 10rem 20rem;
+      background-color: #00aeec;
+      border-radius: 20rem;
+    }
+  }
+}

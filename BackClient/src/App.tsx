@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import '@css/index.less';
+import React, { Suspense } from 'react';
 
-function App() {
+import initRem from '@/utils/initRem';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from '@/pages/Home/index';
+import TestComp from '@/pages/TestPage/index';
+
+import NavBar from '@cps/NavBar';
+import UserList from '@/pages/Home/UserList';
+import { layoutRouteList } from './router/utils';
+import config from './config';
+import { Spin } from 'antd';
+
+initRem();
+function App(props: any) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Suspense fallback={<Spin size="large" className="layout__loading" />}>
+        <Router basename={config.BASENAME}>
+          <Switch>
+            {layoutRouteList.map((route: any) => (
+              <Route key={config.BASENAME + route.path} path={route.path} component={route.component}></Route>
+            ))}
+          </Switch>
+        </Router>
+      </Suspense>
     </div>
   );
 }

@@ -26,7 +26,7 @@ export interface Config {
 
 const AdminConfig: Config = {
   // react-router basename
-  BASENAME: '/react-ant-admin',
+  BASENAME: '/',
 
   // 请求成功状态码
   SUCCESS_CODE: 200,

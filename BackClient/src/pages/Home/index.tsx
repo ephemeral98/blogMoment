@@ -3,7 +3,12 @@ import SearchBar from '@cps/SearchBar';
 import css from './index.module.less';
 // import { IUserListType } from '@/models/TableListType';
 import * as router from 'react-router';
+import { Route, Switch, Link } from 'react-router-dom';
+
+import TestPage from '@/pages/TestPage';
 import TestComp from '@/components/TestComp';
+import { IRoute } from '@/router/config';
+import { systemRouteList } from '@/router/utils';
 
 export default function Home(props: any) {
   const his = router.useHistory();
@@ -15,6 +20,7 @@ export default function Home(props: any) {
 
   // 监听路由变化
   useEffect(() => {
+    console.log('dadasssss', systemRouteList);
     /* switch (pathname) {
       case '/user':
         setCurPathName('用户管理');
@@ -52,7 +58,15 @@ export default function Home(props: any) {
           <i className="iconfont icon-del"></i>
         </button>
       </div>
-      <section className={css.container}>{props.children}</section>
+      <div className={css.container}>
+        this is content:
+        {/* <Switch> */}
+          {systemRouteList.map((menu: IRoute) => (
+            <Route exact key={menu.path} path="/test" component={TestPage}></Route>
+          ))}
+          {/* <Route path='/test' component={TestPage}></Route> */}
+        {/* </Switch> */}
+      </div>
     </div>
   );
 }

@@ -19,7 +19,6 @@ export function flattenRoute(routeList: IRoute[], deep: boolean, auth: boolean):
       ...route,
       auth: typeof route.auth !== 'undefined' ? route.auth : auth,
     });
-
     if (route.children && deep) {
       result.push(...flattenRoute(route.children, deep, auth));
     }
@@ -43,7 +42,8 @@ function getBusinessRouteList(): IRoute[] {
 }
 
 function getSystemRouteList(): IRoute[] {
-  const routeList = routes.filter(route => route.path === '/system');
+  console.log('route...', routes);
+  const routeList = routes.filter(route => route.path === '/home');
 
   if (routeList.length > 0) {
     return flattenRoute(routeList, true, false);

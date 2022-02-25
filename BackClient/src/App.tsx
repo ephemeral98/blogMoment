@@ -15,16 +15,19 @@ import { Spin } from 'antd';
 
 initRem();
 function App(props: any) {
+  console.log('dada', layoutRouteList);
+
   return (
     <div className="App">
       <NavBar />
       <Suspense fallback={<Spin size="large" className="layout__loading" />}>
-        <Router basename={config.BASENAME}>
+        <Router>
           <Switch>
             {layoutRouteList.map((route: any) => (
-              <Route key={config.BASENAME + route.path} path={route.path} component={route.component}></Route>
+              <Route key={config.BASENAME + route.path} path={'/'} component={Home}></Route>
             ))}
           </Switch>
+          {/* <Route path='/' component={Home}></Route> */}
         </Router>
       </Suspense>
     </div>

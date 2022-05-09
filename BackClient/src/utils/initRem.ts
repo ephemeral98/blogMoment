@@ -1,23 +1,23 @@
-/**
- * 初始化 rem布局
- */
-function initRem(): void {
-  ((doc, win) => {
-    const docEl = doc.documentElement,
-      resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
-    const recalc = () => {
+// 初始化 rem
+
+(() => {
+  const docEl = document.documentElement,
+    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+    recalc = function () {
       const clientWidth = docEl.clientWidth;
       if (!clientWidth) return;
-      if (clientWidth >= 750) {
-        docEl.style.fontSize = clientWidth / 1920 + 'px';
+      if (clientWidth >= 375) {
+        // 如果超过手机设计稿，则按照 pc 固定基本 fontSize
+        // docEl.style.fontSize = '100px';
+        docEl.style.fontSize = '50px';
       } else {
-        docEl.style.fontSize = clientWidth / 750 + 'px';
+        docEl.style.fontSize = '50px';
+        // docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
       }
     };
-    recalc();
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
-  })(document, window);
-}
+  recalc();
+  if (!document.addEventListener) return;
+  window.addEventListener(resizeEvt, recalc, false);
+})();
 
-export default initRem;
+export default {};

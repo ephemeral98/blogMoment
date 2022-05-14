@@ -22,11 +22,43 @@ const Home = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
+// 首页
+const Login = loadable({
+  loader: () => import('@/pages/Login'), // 需要异步加载的路由
+  loading: LoadingTip, // 这是一个的提示
+});
+
 const router = [
   {
     path: '/',
     element: <Home />,
   },
+  {
+    path: '/login',
+    meta: {
+      aaa: 'bb',
+    },
+    element: <Login />,
+  },
 ];
 
-export { router };
+/**
+ * @description: 全局路由拦截
+ * @param {string} pathname 当前路由路径
+ * @param {object} meta 当前路由自定义meta字段
+ * @return {string} 需要跳转到其他页时，就返回一个该页的path路径，或返回resolve该路径的promise对象
+ */
+const onRouteBefore = ({ pathname, meta }) => {
+  console.log('befor...', pathname, meta);
+  const userStore = {
+    isLogin: true,
+    isGotUserInfo: false,
+  };
+
+  // 动态修改页面title
+  if (meta.title !== undefined) {
+    document.title = meta.title;
+  }
+};
+
+export { router, onRouteBefore };

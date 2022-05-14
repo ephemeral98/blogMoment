@@ -23,7 +23,7 @@ module.exports = {
     plugins: [
       new SimpleProgressWebpackPlugin(),
 
-      new TerserPlugin({
+      /* new TerserPlugin({
         // sourceMap: false, //Must be set to true if using source-maps in production
         terserOptions: {
           ecma: undefined,
@@ -35,7 +35,7 @@ module.exports = {
             pure_funcs: process.env.NODE_ENV === 'production' ? ['console.log'] : '', // 生产环境下移除console
           },
         },
-      }),
+      }), */
     ],
     configure: (webpackConfig, { env, paths }) => {
       // paths.appPath='public'

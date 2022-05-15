@@ -22,9 +22,14 @@ const Home = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
-// 首页
+// 登录页
 const Login = loadable({
   loader: () => import('@/pages/Login'), // 需要异步加载的路由
+  loading: LoadingTip, // 这是一个的提示
+});
+
+const Test = loadable({
+  loader: () => import('@/pages/TestPage'), // 需要异步加载的路由
   loading: LoadingTip, // 这是一个的提示
 });
 
@@ -39,6 +44,10 @@ const router = [
       aaa: 'bb',
     },
     element: <Login />,
+  },
+  {
+    path: '/testPage',
+    element: <Test />,
   },
 ];
 

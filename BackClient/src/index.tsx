@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import store from './store/index';
 
 // 初始化一些样式
+import '@css/reset.css';
 import 'antd/dist/antd.css';
 import './utils/initRem';
 

@@ -16,6 +16,7 @@ module.exports = {
       '@img': ['./src/assets/img'],
       '@cps': ['./src/components'],
       '@hooks': ['./src/hooks'],
+      '@css': ['./src/css'],
     },
   },
 

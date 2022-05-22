@@ -4,7 +4,7 @@ let temp = null;
 
 function Guard({ element, meta, handleRouteBefore }) {
   meta = meta || {};
-
+  // console.log('element...', element, meta, handleRouteBefore);
   const location = useLocation();
   const { pathname } = location;
 

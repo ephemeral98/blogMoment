@@ -6,9 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/index';
+// import "tailwindcss/tailwind.css"
+import '@css/tailwindcss.css';
 
 // 初始化一些样式
-import '@css/reset.css';
+import '@css/index.css';
 import 'antd/dist/antd.css';
 import './utils/initRem';
 

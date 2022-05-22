@@ -1,12 +1,12 @@
 const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 // const FastRefreshCracoPlugin = require('craco-fast-refresh');
 const path = require('path');
 const CracoAlias = require('craco-alias');
 
 module.exports = {
-  // 代理接口
-  
+  postcss: {
+    plugins: [require('tailwindcss'), require('autoprefixer')],
+  },
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'config.js', '.json'],
@@ -71,7 +71,12 @@ module.exports = {
     ],
     plugins: [
       // 配置 babel-plugin-import
-      ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
+      [
+        'import',
+        { libraryName: 'antd', libraryDirectory: 'es', style: true },
+        'antd',
+      ],
+      ['babel-plugin-styled-windicss'],
       // 配置解析器
       // ['@babel/plugin-proposal-decorators', { legacy: true }],
       // ['@babel/plugin-proposal-class-properties', { loose: true }],

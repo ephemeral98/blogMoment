@@ -1,6 +1,7 @@
-import React from 'react';
 import loadable from 'react-loadable'; //引入这个loadable，使用这个来加载路由
 import Loading from '@cps/GlobalLoading/Loading';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 // 如果你是js就直接无视这个interface的定义
 interface Router {
@@ -22,6 +23,24 @@ const Home = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
+// 用户页
+const User = loadable({
+  loader: () => import('@/pages/Home/User'), // 需要异步加载的路由
+  loading: LoadingTip, // 这是一个的提示
+});
+
+// 统计页
+const Statistics = loadable({
+  loader: () => import('@/pages/Home/Statistics'), // 需要异步加载的路由
+  loading: LoadingTip, // 这是一个的提示
+});
+
+// 神器页
+const Artifact = loadable({
+  loader: () => import('@/pages/Home/Artifact'), // 需要异步加载的路由
+  loading: LoadingTip, // 这是一个的提示
+});
+
 // 登录页
 const Login = loadable({
   loader: () => import('@/pages/Login'), // 需要异步加载的路由
@@ -33,10 +52,35 @@ const Test = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
+function Redirect({ to }) {
+  let navigate = useNavigate();
+  useEffect(() => {
+    navigate(to);
+  });
+  return null;
+}
+
 const router = [
   {
     path: '/',
     element: <Home />,
+    meta: {
+      requireAuth: true,
+    },
+    children: [
+      {
+        path: 'user',
+        element: <User />,
+      },
+      {
+        path: 'statistics',
+        element: <Statistics />,
+      },
+      {
+        path: 'artifact',
+        element: <Artifact />,
+      },
+    ],
   },
   {
     path: '/login',

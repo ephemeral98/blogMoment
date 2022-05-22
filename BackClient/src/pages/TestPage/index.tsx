@@ -15,14 +15,7 @@ function fontSize_() {
 }
 
 export default () => {
-  const TestWrap = styled.div`
-    ${_width}
-    ${width(20)}
-
-    @media (min-width: 750px) and (max-width: 1280px) {
-      ${fontSize_()}
-    }
-  `;
+  const TestWrap = styled.div``;
 
   const resp = useSelector((state: any) => state.counter) as any;
   const dispatch = useDispatch();
@@ -54,15 +47,9 @@ export default () => {
   }
 
   return (
-    <TestWrap
-      w={['20px', '30px']}
-      mw={['']}
-      h={'30px'}
-      f={{ s: '20px', w: 'bold' }}
-      svw={{ w: '20' }}
-    >
+    <TestWrap>
       test...page...{a}
-      <div className="box">hello,test box</div>
+      <div className="box w-2">hello,test box</div>
       <div>{resp.value}</div>
       <button onClick={handleAdd}>click</button>
       <button onClick={asyncClick}>async Click</button>

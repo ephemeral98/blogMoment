@@ -34,7 +34,7 @@ function transformRoutes(routes) {
       obj.element = lazyLoad(obj.component, obj.meta);
     }
     if (obj.children) {
-      // obj.children = transformRoutes(obj.children);
+      obj.children = transformRoutes(obj.children);
     }
     if (obj.element) {
       obj.element = (

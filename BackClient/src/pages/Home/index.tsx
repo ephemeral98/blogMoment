@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
+import User from './User';
+import { Outlet } from 'react-router-dom'
 
-export default () => {
+export default (props) => {
   const resp = useSelector((state: any) => state.counter) as any;
   const dispatch = useDispatch();
 
   return (
-    <div>
-      home...page...
-      <div className="box">hello,home box</div>
-      <div>{resp.value}</div>
-      <button></button>
+    <div className="home-wrap">
+      {/* <User /> */}
+      <Outlet />
     </div>
   );
 };

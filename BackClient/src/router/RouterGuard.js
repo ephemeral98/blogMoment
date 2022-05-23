@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import * as nav from 'react-router-dom';
+
 import Guard from './Guard';
 
 let handleRouteBefore = null;
@@ -26,6 +28,7 @@ function lazyLoad(importFn, meta) {
 function transformRoutes(routes) {
   const list = [];
   routes.forEach((route) => {
+    console.log('打印一下router...', route);
     const obj = { ...route };
     if (obj.redirect) {
       obj.element = <Navigate to={obj.redirect} replace={true} />;

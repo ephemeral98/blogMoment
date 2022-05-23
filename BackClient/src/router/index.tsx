@@ -52,14 +52,6 @@ const Test = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
-function Redirect({ to }) {
-  let navigate = useNavigate();
-  useEffect(() => {
-    navigate(to);
-  });
-  return null;
-}
-
 const router = [
   {
     path: '/',

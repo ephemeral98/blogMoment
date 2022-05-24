@@ -91,21 +91,19 @@ export default () => {
   }
 
   return (
-    <div>
-      <TabBarWrap className="flex justify-center items-center flex-col">
-        {tabList.map((tab) => (
-          <div
-            className={`tab_item ${tab.active && 'active'}`}
-            key={tab.id}
-            onClick={() => {
-              pickTab(tab);
-            }}
-          >
-            <i className={`iconfont ${tab.icon}`}></i>
-            <div className="name">{tab.name}</div>
-          </div>
-        ))}
-      </TabBarWrap>
-    </div>
+    <TabBarWrap className="flex justify-center items-center flex-col">
+      {tabList.map((tab) => (
+        <div
+          className={`tab_item ${tab.active && 'active'}`}
+          key={tab.id}
+          onClick={() => {
+            pickTab(tab);
+          }}
+        >
+          <i className={`iconfont ${tab.icon}`}></i>
+          <div className="name">{tab.name}</div>
+        </div>
+      ))}
+    </TabBarWrap>
   );
 };

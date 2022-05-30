@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import User from './User';
+import User from './UserList';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -10,7 +10,7 @@ export default (props) => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/user');
+      navigate('/userList');
     }
   }, []);
 

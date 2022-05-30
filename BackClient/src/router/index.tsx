@@ -23,33 +23,39 @@ const Home = loadable({
   loading: LoadingTip, // 这是一个的提示
 });
 
-// 用户页
-const User = loadable({
-  loader: () => import('@/pages/Home/User'), // 需要异步加载的路由
-  loading: LoadingTip, // 这是一个的提示
+// 用户列表页
+const UserList = loadable({
+  loader: () => import('@/pages/Home/UserList'),
+  loading: LoadingTip,
 });
 
 // 统计页
 const Statistics = loadable({
-  loader: () => import('@/pages/Home/Statistics'), // 需要异步加载的路由
-  loading: LoadingTip, // 这是一个的提示
+  loader: () => import('@/pages/Home/Statistics'),
+  loading: LoadingTip,
 });
 
 // 神器页
 const Artifact = loadable({
-  loader: () => import('@/pages/Home/Artifact'), // 需要异步加载的路由
-  loading: LoadingTip, // 这是一个的提示
+  loader: () => import('@/pages/Home/Artifact'),
+  loading: LoadingTip,
 });
 
 // 登录页
 const Login = loadable({
-  loader: () => import('@/pages/Login'), // 需要异步加载的路由
-  loading: LoadingTip, // 这是一个的提示
+  loader: () => import('@/pages/Login'),
+  loading: LoadingTip,
+});
+
+// 用户页
+const User = loadable({
+  loader: () => import('@/pages/User'),
+  loading: LoadingTip,
 });
 
 const Test = loadable({
-  loader: () => import('@/pages/TestPage'), // 需要异步加载的路由
-  loading: LoadingTip, // 这是一个的提示
+  loader: () => import('@/pages/TestPage'),
+  loading: LoadingTip,
 });
 
 const router = [
@@ -61,8 +67,8 @@ const router = [
     },
     children: [
       {
-        path: 'user',
-        element: <User />,
+        path: 'userList',
+        element: <UserList />,
       },
       {
         path: 'statistics',
@@ -84,6 +90,10 @@ const router = [
   {
     path: '/testPage',
     element: <Test />,
+  },
+  {
+    path: '/user/:account',
+    element: <User />,
   },
 ];
 

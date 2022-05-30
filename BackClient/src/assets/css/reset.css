@@ -142,6 +142,7 @@ p {
 input,
 textarea {
   outline: none;
+  resize: none !important;
 }
 
 div {
@@ -166,4 +167,10 @@ button {
 .App {
   padding: 0 1rem;
   overflow: auto;
+}
+
+@media (max-width: 1280px) {
+  .App {
+    padding: 0 0.1rem;
+  }
 }

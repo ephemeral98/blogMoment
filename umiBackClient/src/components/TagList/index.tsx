@@ -9,7 +9,7 @@ export default function TagList() {
     active: boolean;
   }
 
-  const [tagList, setTagList] = useState([
+  const [tagList, setTagList] = useState<ITagItem[]>([
     {
       id: 1,
       name: '你应该知道的Vue',
@@ -25,7 +25,7 @@ export default function TagList() {
       name: '被抛弃的Angular',
       active: false,
     },
-  ] as ITagItem[]);
+  ]);
 
   const [isShowDel, setIsShowDel] = useState(false);
   function mouseEnter(tag: ITagItem) {

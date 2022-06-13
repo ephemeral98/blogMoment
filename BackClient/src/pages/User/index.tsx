@@ -2,11 +2,14 @@ import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Tabs } from 'antd';
 import Dynamic from './Dynamic';
-
+import ArticleTab from './ArticleTab';
+import FollowTab from './FollowTab';
 
 const { TabPane } = Tabs;
 
 const UserWrap = styled.div`
+  padding-bottom: .5rem;
+
   .avatar {
     width: 2.5rem;
     height: 2.5rem;
@@ -119,17 +122,28 @@ export default () => {
           <Dynamic></Dynamic>
           <Dynamic></Dynamic>
         </TabPane>
-        <TabPane tab="回答" key="2">
-          Content of Tab Pane 2
+        <TabPane tab="标签" key="2">
+          <div className='flex'>
+            <div className='tag'>你应该知道的JavaScript</div>
+            <div className='tag'>你不知道的Vue</div>
+            <div className='tag'>你不知道的React</div>
+          </div>
         </TabPane>
         <TabPane tab="文章" key="3">
-          Content of Tab Pane 3
+          <ArticleTab></ArticleTab>
+          <ArticleTab></ArticleTab>
+          <ArticleTab></ArticleTab>
         </TabPane>
         <TabPane tab="收藏" key="4">
-          Content of Tab Pane 4
+          <ArticleTab></ArticleTab>
+          <ArticleTab></ArticleTab>
         </TabPane>
         <TabPane tab="关注" key="5">
-          Content of Tab Pane 5
+          <div className='flex'>
+            <FollowTab></FollowTab>
+            <FollowTab></FollowTab>
+            <FollowTab></FollowTab>
+          </div>
         </TabPane>
       </Tabs>
     </UserWrap>

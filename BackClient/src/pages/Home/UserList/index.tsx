@@ -8,7 +8,7 @@ const UserWrap = styled.div`
   height: 100vh;
   @apply bg-cyan-100;
 
-  .user_item {
+  .user_item  {
     width: 80%;
     @apply bg-cyan-200 p-0.5 rounded-sm flex justify-between overflow-auto;
     margin: 0.3rem auto 0;

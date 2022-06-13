@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { incremented, asyncAdd, store, testApi } from '@/store/modules/couterStore';
-import { _width, styled } from '@/assets/css/mixins';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 function width(size) {
   console.log('size....');

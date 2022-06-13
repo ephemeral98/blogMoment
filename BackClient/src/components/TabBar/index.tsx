@@ -57,7 +57,7 @@ export default () => {
     {
       id: 1,
       name: '用户',
-      path: 'user',
+      path: 'userList',
       icon: 'icon-user',
       active: true,
     },

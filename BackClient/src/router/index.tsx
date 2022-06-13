@@ -53,6 +53,13 @@ const User = loadable({
   loading: LoadingTip,
 });
 
+// 文章页
+const Article = loadable({
+  loader: () => import('@/pages/Article'),
+  loading: LoadingTip,
+});
+
+// 测试页
 const Test = loadable({
   loader: () => import('@/pages/TestPage'),
   loading: LoadingTip,
@@ -94,6 +101,10 @@ const router = [
   {
     path: '/user/:account',
     element: <User />,
+  },
+  {
+    path: '/article/:slug',
+    element: <Article />,
   },
 ];
 

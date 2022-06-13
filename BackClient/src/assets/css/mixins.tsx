@@ -1,45 +1,34 @@
-import styled, { css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-let mixin = css`
-  & {
-    color: red;
-    ${{
-      position: 'absolute',
-      left: '100px',
-      top: '100px',
-    }}
-    .title {
-      color: blue;
-    }
-    .content {
-      font-size: ${(props) => props.someCondition.fontSize};
-      color: pink;
-    }
+/**
+ * 多行溢出打点
+ * @param n 行数
+ * @returns 
+ */
+function _overDots(n) {
+  return {
+    'overflow': 'hidden',
+    'text-overflow': 'ellipsis',
+    'display': '-webkit-box',
+    '-webkit-box-orient': 'vertical',
+    '-webkit-line-clamp': `${n}` //行数
   }
-`;
+}
 
-export const flexPos = css`
-  display: flex;
-  justify-content: ${(props) => props.pos || 'center'};
-  align-items: ${(props) => props.pos || 'center'};
-`;
-
-export const _width = css`
-  @media (max-width: 750px) {
-    width: 150px;
-    background-color: plum;
-    height: ${props => console.log('-宽度', props)};
+export const OverDots = createGlobalStyle`
+  .over-dots-1 {
+    ${_overDots(1)}
   }
-
-  @media (min-width: 750px) and (max-width: 1280px) {
-    width: 300px;
-    background-color: gold;
+  .over-dots-2 {
+    ${_overDots(2)}
   }
-
-  @media (min-width: 1280px) and (max-width: 1920px) {
-    width: 500px;
-    background-color: darkblue;
+  .over-dots-3 {
+    ${_overDots(3)}
   }
-`;
-
-export { styled };
+  .over-dots-4 {
+    ${_overDots(4)}
+  }
+  .over-dots-5 {
+    ${_overDots(5)}
+  }
+`

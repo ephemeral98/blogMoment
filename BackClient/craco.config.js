@@ -71,11 +71,7 @@ module.exports = {
     ],
     plugins: [
       // 配置 babel-plugin-import
-      [
-        'import',
-        { libraryName: 'antd', libraryDirectory: 'es', style: true },
-        'antd',
-      ],
+      ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
       ['babel-plugin-styled-windicss'],
       // 配置解析器
       // ['@babel/plugin-proposal-decorators', { legacy: true }],

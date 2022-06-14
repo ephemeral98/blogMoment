@@ -1,57 +1,39 @@
+// 评论 api 操作
 const Controller = require('egg').Controller;
+const { toInt, foundErr, foundSucc, handleSucc, handleErr } = require('../utils/tools');
 
-function toInt(str) {
-  if (typeof str === 'number') return str;
-  if (!str) return str;
-  return parseInt(str, 10) || 0;
-}
-
-class UserController extends Controller {
+class CommentController extends Controller {
   async index() {
-    const ctx = this.ctx;
+    const { ctx } = this;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.model.User.findAll(query);
+    ctx.body = await ctx.model.Users.findAndCountAll(query);
   }
 
   async show() {
-    const ctx = this.ctx;
-    ctx.body = await ctx.model.User.findByPk(toInt(ctx.params.id));
+    const { ctx } = this;
+    ctx.body = await ctx.model.article.findByPk(toInt(ctx.params.id));
   }
 
   async create() {
-    const ctx = this.ctx;
-    const { id, name, age } = ctx.request.body;
-    const user = await ctx.model.User.create({ id, name, age });
-    ctx.status = 201;
-    ctx.body = user;
-  }
-
-  async update() {
-    const ctx = this.ctx;
-    const id = toInt(ctx.params.id);
-    const user = await ctx.model.User.findByPk(id);
-    if (!user) {
-      ctx.status = 404;
-      return;
+    const { ctx } = this;
+    const { content, parent, toWho, userId } = ctx.request.body;
+    const body = {
+      content,
+      parent,
+      toWho,
+      userId,
+    };
+    try {
+      const comment = await ctx.model.Users.create(body);
+      handleSucc(ctx, comment);
+    } catch ({ message }) {
+      handleErr(ctx, message);
     }
-
-    const { name, age } = ctx.request.body;
-    await user.update({ name, age });
-    ctx.body = user;
   }
 
-  async destroy() {
-    const ctx = this.ctx;
-    const id = toInt(ctx.params.id);
-    const user = await ctx.model.User.findByPk(id);
-    if (!user) {
-      ctx.status = 404;
-      return;
-    }
+  async update() {}
 
-    await user.destroy();
-    ctx.status = 200;
-  }
+  async destroy() {}
 }
 
-module.exports = UserController;
+module.exports = CommentController;

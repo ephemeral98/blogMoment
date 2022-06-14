@@ -5,6 +5,7 @@ const { toInt, foundErr, foundSucc, handleSucc, handleErr } = require('../utils/
 class CommentController extends Controller {
   async index() {
     const { ctx } = this;
+    console.log('commont....', ctx.model.Comment);
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
     ctx.body = await ctx.model.Comment.findAndCountAll(query);
   }

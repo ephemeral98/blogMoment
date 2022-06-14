@@ -2,7 +2,7 @@ module.exports = (app) => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
   const Users = app.model.define(
-    'users',
+    'Users',
     {
       id: {
         type: INTEGER(11),

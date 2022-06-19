@@ -23,12 +23,24 @@ module.exports = (appInfo) => {
     // 配置数据库时间为东八区北京时间
     timezone: '+08:00',
     operatorsAliases: false,
-    define: {
-      freezeTableName: true, // 强制表名称等于模型名称
-    },
+    defaultCharset: 'utf8',
+    
     dialectOptions: {
-      charset: 'utf8' // 防止中文乱码
-    }
+      charset: 'utf8', // 防止中文乱码
+      dateStrings: true,
+      collate: 'utf8_general_ci',
+      options: {
+        charset: 'utf8',
+        collate: 'utf8_general_ci',
+      },
+      typeCast(field, next) {
+        if (field.type === 'DATETIME') {
+          // 返回正确得时间
+          return field.string();
+        }
+        return next();
+      },
+    },
   };
 
   config.security = {

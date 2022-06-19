@@ -6,7 +6,7 @@ class CommentController extends Controller {
   async index() {
     const { ctx } = this;
     const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    const resp = await ctx.model.Users.findAndCountAll(query);
+    const resp = await ctx.model.Test.findAndCountAll(query);
     const respBody = resp.rows?.map?.((item) => {
       return {
         id: item.id,

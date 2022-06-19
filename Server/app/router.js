@@ -11,6 +11,8 @@ module.exports = (app) => {
   router.resources('articles', '/articles', controller.articles);
   router.resources('dailyWords', '/dailyWords', controller.dailyWords);
   router.resources('comment', '/comment', controller.comment);
+  router.resources('test', '/test', controller.test);
+
 
   // 构造出数据库表结构：
   app.beforeStart(async () => {

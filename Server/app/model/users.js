@@ -1,5 +1,7 @@
 module.exports = (app) => {
-  const { STRING, INTEGER, DATE } = app.Sequelize;
+  const { STRING, INTEGER, DATE, CHAR } = app.Sequelize;
+  const all = app.Sequelize;
+  console.log('all...', all);
 
   const Users = app.model.define(
     'Users',
@@ -12,13 +14,29 @@ module.exports = (app) => {
         created_at: DATE,
         updated_at: DATE,
       },
+
+      /**
+       * 账号
+       */
+      account: {
+        type: STRING(20),
+      },
+
+      /**
+       * 密码
+       */
+      password: {
+        type: STRING(20),
+      },
+
       /**
        * 姓名
        */
       name: {
-        type: STRING(20),
+        type: STRING(600),
         allowNull: true,
         default: '游客',
+       collate: 'utf8_general_ci'
       },
 
       /**
@@ -44,6 +62,8 @@ module.exports = (app) => {
     },
     {
       tableName: 'users',
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
       createAt: true, // 创建一个 创建时间
       updateAt: true, // 创建一个 更新时间
       deleteAt: '已删除', // 显示假删除的文本

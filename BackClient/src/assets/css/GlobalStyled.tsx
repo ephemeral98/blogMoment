@@ -1,5 +1,5 @@
-import { Common } from './Common';
-import { OverDots } from './Mixins';
+import { Common } from './common';
+import { OverDots } from './mixins';
 
 
 export default () => {

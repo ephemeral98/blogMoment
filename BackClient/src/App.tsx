@@ -4,6 +4,22 @@ import { router, onRouteBefore } from '@/router';
 import { useRoutes, useLocation } from 'react-router';
 import TabBar from './components/TabBar/index';
 import { transformRoutes, setRouteBefore } from '@/router/RouterGuard';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+
+// Create a client 全局禁用窗口焦点影响数据刷新
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   setRouteBefore(onRouteBefore);
@@ -17,8 +33,10 @@ function App() {
   }, [location.pathname]);
   return (
     <>
-      {isShowTabBar && <TabBar />}
-      <div className="App">{elements}</div>
+      <QueryClientProvider client={queryClient}>
+        {isShowTabBar && <TabBar />}
+        <div className="App">{elements}</div>
+      </QueryClientProvider>
     </>
   );
 }

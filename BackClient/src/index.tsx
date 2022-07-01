@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import store from './store/index';
 // import "tailwindcss/tailwind.css"
 import GlobalStyle from '@/assets/css/GlobalStyled';
+
 import '@css/tailwindcss.css';
 
 // 初始化一些样式

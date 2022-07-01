@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { Checkbox } from 'antd';
 import { useNavigate, useRoutes } from 'react-router-dom';
 import Item from 'antd/lib/list/Item';
+import { useQuery } from 'react-query';
+import { $GET } from '@/service/request';
 const UserWrap = styled.div`
   width: 100%;
   height: 100vh;
   @apply bg-cyan-100;
 
-  .user_item  {
+  .user_item {
     width: 80%;
     @apply bg-cyan-200 p-0.5 rounded-sm flex justify-between overflow-auto;
     margin: 0.3rem auto 0;
@@ -94,10 +96,25 @@ export default () => {
     console.log('搜索：', searchTx);
   }
 
+  /**
+   * 获取用户列表信息
+   */
+  // function getUsers() {
+  const fetchUserList = useQuery('list', async () => {
+    const resp: any = await $GET('/api/users', {});
+    console.log('resp...', resp);
+    return resp.data;
+  });
+
+  console.log('fetchUserList....', fetchUserList);
+  // return <div>拿到了数据。。。</div>;
+  // }
+
   return (
     <UserWrap>
       <header className="flex justify-between">
         <div></div>
+
         {/* 搜索框 */}
         <div className="search_wrap flex justify-center">
           <input
@@ -109,7 +126,9 @@ export default () => {
             type="text"
             placeholder="请输入账号或者昵称"
           />
-          <button className="ml-1 px-1 rounded-sm" onClick={filterUser}>搜索</button>
+          <button className="ml-1 px-1 rounded-sm" onClick={filterUser}>
+            搜索
+          </button>
         </div>
 
         {/* 批量删除按钮 */}

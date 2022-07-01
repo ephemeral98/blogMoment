@@ -6,7 +6,7 @@ const testUrl = 'http://120.77.211.242:9701'; // 测试服
 const masterUrl = 'https://coinoriginswap.org/'; // 域名https 正式服
 
 // const baseURL = process.env.NODE_ENV == 'development' ? testUrl : '';
-const baseURL = masterUrl;
+const baseURL = '';
 
 const defaultConfig = {
   baseURL,
